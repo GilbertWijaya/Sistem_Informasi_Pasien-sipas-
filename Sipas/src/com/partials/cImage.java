@@ -7,23 +7,41 @@ import javax.swing.JLabel;
 
 public class cImage extends JLabel {
 
-    public cImage(String file,int x,int y,int width,int height,boolean centerAlligntment){
+    public cImage(String file,int x,int y,int width,int height){
 
         super();
         ImageIcon icon = new ImageIcon(file);
         setIcon(icon);
+        
 
         Image img = icon.getImage();
-        Image newImg = img.getScaledInstance(width, height,java.awt.Image.SCALE_SMOOTH);
+        Image newImg = img.getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH);
 
         icon.setImage(newImg);
 
-        if (centerAlligntment) {
-            setHorizontalAlignment(JLabel.CENTER);
-        }
-
+        // if (centerAlligntment) {
+        //     setHorizontalAlignment(JLabel.CENTER);
+        // }
+        //setLocation(x, y);
         setVerticalAlignment(JLabel.CENTER);
 
     }
+
+    // public cImage(String file,int width,int height,boolean centerAllignment) {
+    //     super();
+    //     ImageIcon icon = new ImageIcon(file);
+    //     setIcon(icon);
+        
+    //     //set size
+    //     Image img = icon.getImage();
+    //     Image newimg = img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+
+    //     icon.setImage(newimg);
+
+    //     setVerticalAlignment(JLabel.CENTER);
+    //     setHorizontalAlignment(JLabel.CENTER);
+
+        
+    // }
 
 }

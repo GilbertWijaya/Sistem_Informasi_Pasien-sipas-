@@ -10,7 +10,8 @@ public class cLinkKeluar extends JLabel {
     public cLinkKeluar(int x,int y){
 
         super();
-        setBounds(x, y, 78, 36);
+        //setBounds(x, y, 78, 36);
+        setBounds(x, y, 100, 50);
         setText("Keluar");
         setFont(cFonts.CR_SARAN_OUTLINK_FONT_24);
         setForeground(cColor.BLACK_1);
