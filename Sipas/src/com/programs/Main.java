@@ -13,6 +13,7 @@ public class Main {
         //Controller.showDaftarPasien();
 
         cDashboard dashboard = new cDashboard();
+        
 
     }
 

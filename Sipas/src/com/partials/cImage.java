@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 
 public class cImage extends JLabel {
 
-    public cImage(String file,int x,int y,int width,int height){
+    public cImage(String file,int width,int height){
 
         super();
         ImageIcon icon = new ImageIcon(file);
