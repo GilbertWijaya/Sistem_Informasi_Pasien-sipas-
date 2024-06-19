@@ -7,7 +7,7 @@ public class cTextArea extends JTextArea {
     public cTextArea(boolean editable){
 
         super();
-        setBackground(cColor.GREEN_TOSKA);
+        //setBackground(cColor.GREEN_TOSKA);
 
         if (editable) {
             setForeground(cColor.BLACK_1);

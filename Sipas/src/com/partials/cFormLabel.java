@@ -4,13 +4,13 @@ import javax.swing.JLabel;
 
 public class cFormLabel extends JLabel {
 
-    public cFormLabel(String text,int x,int y,int width){
+    public cFormLabel(String text,int x,int y,int width,int height){
 
         super();
         setText(text);
-        setBounds(x, y, width,29);
+        setBounds(x, y, width,height);
 
-        setFont(cFonts.DAF_LOG_FONT_18);
+        setFont(cFonts.INFOR_BOLD_FONT_19);
         setForeground(cColor.BLACK_1);
 
     }

@@ -4,17 +4,22 @@ import javax.swing.JTextField;
 
 public class cTextFields extends JTextField {
 
-    public cTextFields(int x,int y,int width,boolean centerAllignment){
+    public cTextFields(boolean isEditable){
 
         super();
-        setBounds(x, y, width, 28);
 
-        if (centerAllignment) {
-            setHorizontalAlignment(JTextField.CENTER);
+        if (!isEditable) {
+            setEditable(false);
         }
 
         setForeground(cColor.BLACK_1);
         setBorder(new javax.swing.border.LineBorder(cColor.BLACK_1,1));
+
+    }
+
+    public cTextFields(String text,int x,int y,int width,boolean isEditable){
+        this(isEditable);
+        setBounds(x, y, width, 28);
 
     }
 

@@ -10,7 +10,7 @@ import com.partials.cColor;
 import com.partials.cFonts;
 import com.partials.cImage;
 
-public class cDashboardIsiSaldo extends JFrame {
+public abstract class cDashboardIsiSaldo extends JFrame {
 
     public JPanel header = new JPanel();
     public JPanel body = new JPanel();
@@ -59,7 +59,7 @@ public class cDashboardIsiSaldo extends JFrame {
 
         super();
         setSize(1280, 720);
-        //setUndecorated(true);
+        setUndecorated(true);
         setLocationRelativeTo(null);
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
