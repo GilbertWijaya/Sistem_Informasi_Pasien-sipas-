@@ -11,7 +11,7 @@ import com.partials.cFonts;
 import com.partials.cImage;
 import com.partials.cLinkKeluar;
 
-public class cDashboard extends JFrame {
+public abstract class cDashboard extends JFrame {
 
     public JPanel header = new JPanel();
     public JPanel saldoPanel = new JPanel();
@@ -53,8 +53,8 @@ public class cDashboard extends JFrame {
         setSize(1280,720);
         setLocationRelativeTo(null);
         setLayout(null);
-        //setResizable(false);
-        //setUndecorated(true);
+        setResizable(false);
+        setUndecorated(true);
 
         header.setBackground(cColor.GREEN_TOSKA);
         header.setBounds(0, 0, 1280, 300);
@@ -74,7 +74,7 @@ public class cDashboard extends JFrame {
 
         cImage iconBpjs = new cImage("E:\\Mata kuliah\\semester 2\\basis data\\project uas db\\Sipas\\src\\logobpjs.png", 75, 51);
         iconBpjs.setBounds(25, 30, 75, 51);
-        Saldo_Bpjs_label.setBounds(85, 35, 200,20);
+        Saldo_Bpjs_label.setBounds(90, 35, 200,20);
         Saldo_Bpjs_label.setFont(cFonts.DAF_LOG_FONT_18);
         jumlah_saldo_lbl.setBounds(40, 80, 200,20);
         jumlah_saldo_lbl.setFont(cFonts.DAF_LOG_FONT_18);
