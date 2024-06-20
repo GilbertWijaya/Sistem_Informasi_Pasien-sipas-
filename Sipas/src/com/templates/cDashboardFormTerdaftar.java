@@ -39,15 +39,15 @@ public abstract class cDashboardFormTerdaftar extends JFrame {
     cFormLabel titik2_lbl_8 = new cFormLabel(" : ",400,290,1200,50);
     cFormLabel titik2_lbl_9 = new cFormLabel(" : ",400,330,1200,50);
 
-    public cFormLabel Value_nama_lbl = new cFormLabel("test",450,10,1200,50);
-    public cFormLabel Value_usia_lbl = new cFormLabel("test",450,50,1200,50);
-    public cFormLabel Value_email_lbl = new cFormLabel("test",450,90,1200,50);
-    public cFormLabel Value_nomorHP_lbl = new cFormLabel("test",450,130,1200,50);
-    public cFormLabel Value_kelas_lbl = new cFormLabel("test",450,170,1200,50);
-    public cFormLabel Value_ruang_lbl = new cFormLabel("test",450,210,1200,50);
-    public cFormLabel Value_penyakit_lbl = new cFormLabel("test",450,250,1200,50);
-    public cFormLabel Value_pj_lbl = new cFormLabel("test",450,290,1200,50);
-    public cFormLabel Value_alamat_lbl = new cFormLabel("test",450,330,1200,50);
+    // public cFormLabel Value_nama_lbl = new cFormLabel("test",450,10,1200,50);
+    // public cFormLabel Value_usia_lbl = new cFormLabel("test",450,50,1200,50);
+    // public cFormLabel Value_email_lbl = new cFormLabel("test",450,90,1200,50);
+    // public cFormLabel Value_nomorHP_lbl = new cFormLabel("test",450,130,1200,50);
+    // public cFormLabel Value_kelas_lbl = new cFormLabel("test",450,170,1200,50);
+    // public cFormLabel Value_ruang_lbl = new cFormLabel("test",450,210,1200,50);
+    // public cFormLabel Value_penyakit_lbl = new cFormLabel("test",450,250,1200,50);
+    // public cFormLabel Value_pj_lbl = new cFormLabel("test",450,290,1200,50);
+    // public cFormLabel Value_alamat_lbl = new cFormLabel("test",450,330,1200,50);
 
 
     public cDashboardFormTerdaftar(){
@@ -95,15 +95,15 @@ public abstract class cDashboardFormTerdaftar extends JFrame {
         subBodyPanel.add(titik2_lbl_8);
         subBodyPanel.add(titik2_lbl_9);
 
-        subBodyPanel.add(Value_nama_lbl);
-        subBodyPanel.add(Value_usia_lbl);
-        subBodyPanel.add(Value_email_lbl);
-        subBodyPanel.add(Value_nomorHP_lbl);
-        subBodyPanel.add(Value_kelas_lbl);
-        subBodyPanel.add(Value_ruang_lbl);
-        subBodyPanel.add(Value_penyakit_lbl);
-        subBodyPanel.add(Value_pj_lbl);
-        subBodyPanel.add(Value_alamat_lbl);
+        // subBodyPanel.add(Value_nama_lbl);
+        // subBodyPanel.add(Value_usia_lbl);
+        // subBodyPanel.add(Value_email_lbl);
+        // subBodyPanel.add(Value_nomorHP_lbl);
+        // subBodyPanel.add(Value_kelas_lbl);
+        // subBodyPanel.add(Value_ruang_lbl);
+        // subBodyPanel.add(Value_penyakit_lbl);
+        // subBodyPanel.add(Value_pj_lbl);
+        // subBodyPanel.add(Value_alamat_lbl);
 
         bodyPanel.setBackground(cColor.WHITE_100_1);
         bodyPanel.setBounds(0, 0, 1280, 720);

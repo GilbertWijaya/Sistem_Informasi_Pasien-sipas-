@@ -11,13 +11,13 @@ public class cImage extends JLabel {
 
         super();
         ImageIcon icon = new ImageIcon(file);
-        setIcon(icon);
+        //setIcon(icon);
         
 
         Image img = icon.getImage();
         Image newImg = img.getScaledInstance(width,height,java.awt.Image.SCALE_SMOOTH);
 
-        icon.setImage(newImg);
+        this.setIcon(new ImageIcon(newImg));
 
         // if (centerAlligntment) {
         //     setHorizontalAlignment(JLabel.CENTER);

@@ -33,14 +33,14 @@ public abstract class cDashboardPembayaran extends JFrame {
     public JLabel total_harga_label = new JLabel("Total Harga");
     public JLabel harga_lbl = new JLabel("Rp 100.000");
 
-    public JLabel sk_label = new JLabel("Saya telah membaca dan setuju terhadap Syarat dan ketentuan pemesanan ruang");
+    //public JLabel sk_label = new JLabel("Saya telah membaca dan setuju terhadap Syarat dan ketentuan pemesanan ruang");
 
 
     public cDashboardPembayaran(){
         
         super();
         setSize(1280,720);
-        //setUndecorated(true);
+        setUndecorated(true);
         setLocationRelativeTo(null);
         setResizable(false);
         setLayout(null);
@@ -58,9 +58,9 @@ public abstract class cDashboardPembayaran extends JFrame {
         nama_ruang_lbl.setBounds(35, 330, 1280, 50);
         nama_ruang_lbl.setFont(cFonts.DAF_LOG_FONT_18);
         
-        sk_label.setForeground(cColor.BLACK_1);
-        sk_label.setBounds(70, 400, 1280, 50);
-        sk_label.setFont(new Font("Poppins", Font.PLAIN, 15));
+        //sk_label.setForeground(cColor.BLACK_1);
+        //sk_label.setBounds(70, 400, 1280, 50);
+        //sk_label.setFont(new Font("Poppins", Font.PLAIN, 15));
         
         panelUtama.setBackground(cColor.WHITE_100_1);
         panelUtama.setBounds(0, 0, 1280, 720);
@@ -137,7 +137,7 @@ public abstract class cDashboardPembayaran extends JFrame {
         panelUtama.add(panel_keterangan);
         panelUtama.add(rincian_lbl);
         panelUtama.add(nama_ruang_lbl);
-        panelUtama.add(sk_label);
+        //panelUtama.add(sk_label);
 
         setVisible(true);
     }

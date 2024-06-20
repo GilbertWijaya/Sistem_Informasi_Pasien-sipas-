@@ -17,25 +17,13 @@ public class Main {
         
         //System.out.println("sistem informasi pasien");
 
+        //Controller.showLoginPasien();
         //Controller.showDaftarPasien();
-        //Controller.showDashboardUtama();
-
-        //cDashboardRiwayat riwayat = new cDashboardRiwayat();
-
-        //cDashboardIsiSaldo isiSaldo = new cDashboardIsiSaldo();
-
-        //cDashboardKeluhan dashboardKeluhan = new cDashboardKeluhan();
-
-        //cdashboardPenyakit penyakit = new cdashboardPenyakit();
-
-        //cDashboardPembayaran pembayaran = new cDashboardPembayaran();
-
-        //cDashboard dashboard = new cDashboard();
-
-        //cDashboardFormTerdaftar fromTerdaftar = new cDashboardFormTerdaftar();
-        
-        //cDashboardIsiFormulir formulir = new cDashboardIsiFormulir();
-
+        //Controller.showDashboard(10);
+        //Controller.showDashboardIsiSaldo(10);
+        //Controller.showDashboardRiwayat(10);
+        //Controller.showDashboardPembayaran(10);
+        Controller.showDashboardKeluhan(10);
 
     }
 

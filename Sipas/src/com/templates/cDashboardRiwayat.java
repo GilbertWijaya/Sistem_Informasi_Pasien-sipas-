@@ -10,10 +10,10 @@ import com.partials.cFonts;
 
 public abstract class cDashboardRiwayat extends JFrame {
 
-    JPanel header = new JPanel();
-    JPanel subHeader = new JPanel();
-    JPanel bodyPanel = new JPanel();
-    JPanel footer = new JPanel();
+    public JPanel header = new JPanel();
+    public JPanel subHeader = new JPanel();
+    public JPanel bodyPanel = new JPanel();
+    public JPanel footer = new JPanel();
 
     public JLabel RiwayatLabel = new JLabel("Riwayat Anda");
     public JLabel Saran_label = new JLabel("Setelah melihat riwayat anda, tolong terus menjaga kesehatan anda");

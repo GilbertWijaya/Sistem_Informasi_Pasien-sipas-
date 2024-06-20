@@ -7,7 +7,7 @@ public class cPasswordField extends JPasswordField {
     public cPasswordField(int x,int y,int width,boolean centerAlligntment){
 
         super();
-        setBounds(x, y, width, 27);
+        setBounds(x, y, width, 28);
 
         if (centerAlligntment) {
             setHorizontalAlignment(JPasswordField.CENTER);

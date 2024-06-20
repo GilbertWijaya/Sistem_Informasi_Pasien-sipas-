@@ -67,7 +67,7 @@ public abstract class cDashboardIsiFormulir extends JFrame {
         headerPanel.setLayout(null);
 
         subBodyPanel.setBackground(cColor.GREEN_TOSKA);
-        subBodyPanel.setBounds(55, 200, 1150, 480);
+        subBodyPanel.setBounds(55, 180, 1150, 500);
         subBodyPanel.setLayout(null);
         subBodyPanel.add(nama_lbl);
         subBodyPanel.add(tempat_lhr_lbl);
