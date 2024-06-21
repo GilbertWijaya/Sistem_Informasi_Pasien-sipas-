@@ -34,8 +34,10 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
     cTextFields txtAlamat = new cTextFields(450, 343, 500, true);
 
     cButton EditFormulir_btn = new cButton("Edit Formulir", 1005, 655, 200, 28, cColor.GREEN_TOSKA);
+    cButton HapusFormulir_btn = new cButton("Hapus Formulir", 795, 655, 200, 28, cColor.GREEN_TOSKA);
 
-    public dashboardTerdaftarView() {
+
+    public dashboardTerdaftarView(int id) {
         
         super();
 
@@ -72,16 +74,16 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
 
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
-                Controller.showDashboardIsiFormulir();
+                Controller.showDashboardIsiFormulir(id);
             }
 
         });        
 
-        initIsiFormulir();
+        initIsiFormulir(id);
 
     }
 
-    public void initIsiFormulir(){
+    public void initIsiFormulir(int id){
 
         iconIsiFormulir.setBounds(350, 30, 50, 50);
         iconTerdaftar.setBounds(750, 30, 50, 50);
@@ -110,6 +112,7 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
 
         bodyPanel.add(berandaImage);   
         bodyPanel.add(EditFormulir_btn);
+        bodyPanel.add(HapusFormulir_btn);
     }
 
 }

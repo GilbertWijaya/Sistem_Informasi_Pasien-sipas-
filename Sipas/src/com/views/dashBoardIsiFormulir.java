@@ -26,8 +26,8 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
     cTextFields txtNama = new cTextFields(450, 23, 500,true); 
     cTextFields txtTempatLahir = new cTextFields(450, 63, 500,true);
     cTextFields txtTanggalLahir = new cTextFields(450, 103, 500,true);  
-    cRadioButton jk_radioBtn_Pria = new cRadioButton("Pria", "Pria",450 , 143, 100, 28);
-    cRadioButton jk_radioBtn_Wanita = new cRadioButton("Wanita", "Wanita",555 , 143, 200, 28);
+    cRadioButton jk_radioBtn_Pria = new cRadioButton("Pria", "laki_laki",450 , 143, 100, 28);
+    cRadioButton jk_radioBtn_Wanita = new cRadioButton("Wanita", "perempuan",555 , 143, 200, 28);
     cTextFields txtUsia = new cTextFields(450, 183, 500, true);
     cTextFields txtNoHP = new cTextFields(450, 223, 500, true);
     cRadioButton jk_radioBtn_Bpjs = new cRadioButton("BPJS", "BPJS",450 , 263, 100, 28);
@@ -39,7 +39,7 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
 
     cButton isiFormulir_btn = new cButton("Isi Formulir", 1005, 685, 200, 28, cColor.GREEN_TOSKA);
 
-    public dashBoardIsiFormulir() {
+    public dashBoardIsiFormulir(int id) {
         
         super();
 
@@ -76,7 +76,7 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.showDashboardIsiFormulir();
+                Controller.showDashboardIsiFormulir(id);
             }
 
         });
@@ -114,16 +114,16 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.showDashboardTerdaftar();
+                Controller.showDashboardTerdaftar(id);
             }
 
         });
 
-        initIsiFormulir();
+        initIsiFormulir(id);
 
     }
 
-    public void initIsiFormulir(){
+    public void initIsiFormulir(int id){
 
         iconIsiFormulir.setBounds(350, 30, 50, 50);
         iconMenungguPembayaran.setBounds(540, 5, 90, 90);

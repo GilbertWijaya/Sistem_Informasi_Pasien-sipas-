@@ -104,16 +104,16 @@ public class Controller {
 
     }
 
-    public static void showDashboardIsiFormulir(){
+    public static void showDashboardIsiFormulir(int id){
 
-        dashBoardIsiFormulir dashboardIsiForm = new dashBoardIsiFormulir();
+        dashBoardIsiFormulir dashboardIsiForm = new dashBoardIsiFormulir(id);
         dashboardIsiForm.setVisible(true);
 
     }
 
-    public static void showDashboardTerdaftar(){
+    public static void showDashboardTerdaftar(int id){
 
-        dashboardTerdaftarView formTerdaftarView = new dashboardTerdaftarView();
+        dashboardTerdaftarView formTerdaftarView = new dashboardTerdaftarView(id);
         formTerdaftarView.setVisible(true);
 
     }

@@ -98,7 +98,7 @@ public class dashboardView extends cDashboard {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.showDashboardIsiFormulir();
+                Controller.showDashboardIsiFormulir(id);
             }
 
         });
