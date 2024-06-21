@@ -6,15 +6,21 @@ public class cTextArea extends JTextArea {
 
     public cTextArea(boolean editable){
 
+
         super();
         //setBackground(cColor.GREEN_TOSKA);
 
+        
+        setForeground(cColor.BLACK_1);
+
         if (editable) {
             setForeground(cColor.BLACK_1);
+            //setEditable(false);
         }
         else{
-            setForeground(cColor.BLACK_1);
             setEditable(false);
+            
+            setForeground(cColor.BLACK_1);
         }
         
         setLineWrap(true);
@@ -22,7 +28,7 @@ public class cTextArea extends JTextArea {
 
     }
 
-    public cTextArea(String text,int x,int y,int width,int height, boolean editable){
+    public cTextArea(int x,int y,int width,int height, boolean editable){
         this(editable);
         setBounds(x, y, width, height);
     }

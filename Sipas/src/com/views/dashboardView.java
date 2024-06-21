@@ -98,7 +98,7 @@ public class dashboardView extends cDashboard {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                //Controller.showDashboardIsiSaldo(id);
+                Controller.showDashboardIsiFormulir();
             }
 
         });
@@ -117,7 +117,7 @@ public class dashboardView extends cDashboard {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                //Controller.showDashboardIsiSaldo(id);
+                Controller.showDashboardKeluhan(id);
             }
 
         });

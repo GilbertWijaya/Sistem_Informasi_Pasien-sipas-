@@ -53,7 +53,7 @@ public abstract class cdashboardPenyakit extends JFrame {
         body.setBackground(cColor.WHITE_100_1);
         body.setBounds(0,0,1280,720);
         body.setLayout(null);
-        body.add(lbl_pesan_kamar);
+        //body.add(lbl_pesan_kamar);
 
         pengertian_lbl.setForeground(cColor.BLACK_1);
         pengertian_lbl.setBounds(20, 5, 1280, 50);

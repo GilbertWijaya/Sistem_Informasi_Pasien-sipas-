@@ -19,11 +19,11 @@ public class Main {
 
         //Controller.showLoginPasien();
         //Controller.showDaftarPasien();
-        //Controller.showDashboard(10);
+        Controller.showDashboard(10);
         //Controller.showDashboardIsiSaldo(10);
         //Controller.showDashboardRiwayat(10);
         //Controller.showDashboardPembayaran(10);
-        Controller.showDashboardKeluhan(10);
+        //Controller.showDashboardKeluhan(10);
 
     }
 

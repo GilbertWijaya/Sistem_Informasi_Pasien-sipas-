@@ -2,9 +2,16 @@ package com.programs;
 
 import com.views.DashboardPembayaranView;
 import com.views.StartView;
+import com.views.dashBoardIsiFormulir;
 import com.views.dashBoardIsiSaldoView;
 import com.views.dashBoardRiwayatView;
 import com.views.dashboardKeluhan;
+import com.views.dashboardPenyakitAsmaView;
+import com.views.dashboardPenyakitDemamView;
+import com.views.dashboardPenyakitDiabetesView;
+import com.views.dashboardPenyakitPanuView;
+import com.views.dashboardPenyakitStrokeView;
+import com.views.dashboardTerdaftarView;
 import com.views.dashboardView;
 
 public class Controller {
@@ -57,6 +64,57 @@ public class Controller {
 
         dashboardKeluhan dashboardKeluhan = new dashboardKeluhan(id);
         dashboardKeluhan.setVisible(true);
+
+    }
+
+    public static void showDashboardDiabetes(){
+
+        dashboardPenyakitDiabetesView penyakitDiabetes = new dashboardPenyakitDiabetesView();
+        penyakitDiabetes.setVisible(true);
+        
+
+    }
+
+    public static void showDashboardAsma(){
+
+        dashboardPenyakitAsmaView penyakitAsma = new dashboardPenyakitAsmaView();
+        penyakitAsma.setVisible(true);
+        
+
+    }
+
+    public static void showDashboardDemam(){
+
+        dashboardPenyakitDemamView penyakitDemamView = new dashboardPenyakitDemamView();
+        penyakitDemamView.setVisible(true);
+
+    }
+
+    public static void showDashboardPanu(){
+
+        dashboardPenyakitPanuView penyakitPanu  = new dashboardPenyakitPanuView();
+        penyakitPanu.setVisible(true);
+
+    }
+
+    public static void showDashboardStroke(){
+
+        dashboardPenyakitStrokeView penyakitStrokeView = new dashboardPenyakitStrokeView();
+        penyakitStrokeView.setVisible(true);
+
+    }
+
+    public static void showDashboardIsiFormulir(){
+
+        dashBoardIsiFormulir dashboardIsiForm = new dashBoardIsiFormulir();
+        dashboardIsiForm.setVisible(true);
+
+    }
+
+    public static void showDashboardTerdaftar(){
+
+        dashboardTerdaftarView formTerdaftarView = new dashboardTerdaftarView();
+        formTerdaftarView.setVisible(true);
 
     }
 
