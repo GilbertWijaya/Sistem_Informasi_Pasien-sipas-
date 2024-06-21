@@ -1,6 +1,9 @@
 package com.views;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JOptionPane;
 
 import com.partials.cButton;
 import com.partials.cCheckBox;
@@ -8,6 +11,7 @@ import com.partials.cColor;
 import com.partials.cImage;
 import com.partials.cTextFields;
 import com.programs.Controller;
+import com.programs.Model;
 import com.templates.cDashboardIsiSaldo;
 
 public class dashBoardIsiSaldoView extends cDashboardIsiSaldo {
@@ -37,12 +41,49 @@ public class dashBoardIsiSaldoView extends cDashboardIsiSaldo {
             }
 
         });
+
+        isiSaldo_btn.addActionListener(new java.awt.event.ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                int saldo = Integer.parseInt(Model.getDetailAkun(id)[4].toString());
+                int newSaldo = Integer.parseInt(txtIsiSaldo.getText());
+                int totalSaldo = saldo + newSaldo;
+
+                if (txtIsiSaldo.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Masukan nilai yang sesuai", "Peringatan", JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                    if (newSaldo < 50000) {
+                        JOptionPane.showMessageDialog(null, "Minimal pengisian saldo adalah Rp 50.000", "Peringatan", JOptionPane.ERROR_MESSAGE);
+                    }
+                    else if (newSaldo > 1000000) {
+                        JOptionPane.showMessageDialog(null, "Maksimal pengisian saldo adalah Rp 1.000.000", "Peringatan", JOptionPane.ERROR_MESSAGE);
+                    }
+                    else if (newSaldo % 50000!= 0) {
+                        JOptionPane.showMessageDialog(null, "Nominal pengisian saldo harus kelipatan 50.000", "Peringatan", JOptionPane.ERROR_MESSAGE);
+                    }
+                    else{
+                        Model.isiSaldo(id, totalSaldo);
+                        JOptionPane.showMessageDialog(null, "Saldo berhasil ditambahkan", "Informasi", JOptionPane.INFORMATION_MESSAGE);
+                        Controller.showDashboard(id);
+
+                    }
+
+                }
+
+            }
+
+        });
         
-        initsIsiSaldo();
+        initsIsiSaldo(id);
     }
 
-    public void initsIsiSaldo(){
+    public void initsIsiSaldo(int id){
         berandaImage.setBounds(1150, 5, 100, 100);
+
+        nomorHp.setText(Model.getDetailAkun(id)[3].toString());
 
         header.add(berandaImage);
         body.add(txtIsiSaldo);

@@ -17,9 +17,9 @@ public class Main {
         
         //System.out.println("sistem informasi pasien");
 
-        //Controller.showLoginPasien();
+        Controller.showLoginPasien();
         //Controller.showDaftarPasien();
-        Controller.showDashboard(10);
+        //Controller.showDashboard(2);
         //Controller.showDashboardIsiSaldo(10);
         //Controller.showDashboardRiwayat(10);
         //Controller.showDashboardPembayaran(10);

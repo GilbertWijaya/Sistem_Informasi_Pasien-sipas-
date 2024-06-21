@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import com.partials.cFormLabel;
 import com.partials.cImage;
 import com.programs.Controller;
+import com.programs.Model;
 import com.templates.cDashboard;
 
 public class dashboardView extends cDashboard {
@@ -122,16 +123,18 @@ public class dashboardView extends cDashboard {
 
         });
         
-        initsDasboardUtamaPasien();
+        initsDasboardUtamaPasien(id);
     }
 
-    public void initsDasboardUtamaPasien(){
+    public void initsDasboardUtamaPasien(int id){
 
         isiSaldoIcon.setBounds(650, 43, 200, 100);
         RiwayatIcon.setBounds(850,43, 200, 100);
         pendaftaranIcon.setBounds(380,45, 150, 150);
         konsultasiIcon.setBounds(780,60, 130, 130);
         
+        nama_anda_lbl.setText(Model.getDetailAkun(id)[2].toString());
+        jumlah_saldo_lbl.setText("RP " + Model.getDetailAkun(id)[4].toString());
 
         body.add(pendaftaranIcon);
         body.add(pendaftaranLabel);
