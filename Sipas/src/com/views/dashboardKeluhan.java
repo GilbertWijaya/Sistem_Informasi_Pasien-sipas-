@@ -52,7 +52,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
             public void actionPerformed(ActionEvent e) {
                 
                 
-                Controller.showDashboardDiabetes();
+                Controller.showDashboardDiabetes(id);
 
             }
 
@@ -64,7 +64,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
             public void actionPerformed(ActionEvent e) {
                 
                 
-                Controller.showDashboardAsma();
+                Controller.showDashboardAsma(id);
             }
         });
 
@@ -72,7 +72,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.showDashboardDemam();
+                Controller.showDashboardDemam(id);
             }
 
         });
@@ -81,7 +81,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.showDashboardPanu();
+                Controller.showDashboardPanu(id);
             }
 
         });
@@ -90,7 +90,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Controller.showDashboardStroke();
+                Controller.showDashboardStroke(id);
             }
 
         });

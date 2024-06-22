@@ -2,6 +2,9 @@ package com.programs;
 
 import java.sql.Connection;
 import java.sql.Statement;
+
+import javax.swing.DefaultComboBoxModel;
+
 import java.sql.ResultSet;
 import java.sql.DriverManager;
 
@@ -185,6 +188,87 @@ public class Model {
         }
 
         return status;
+    }
+
+    public static DefaultComboBoxModel PenyakitBoxModel(){
+
+        connection();
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+
+        try {
+            
+            stmt = conn.createStatement();
+            String query = "SELECT * FROM tbl_keluhan";
+
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Object data[] = {rs.getInt("id_keluhan"),rs.getString("nama_keluhan"),rs.getString("pengertian_klh"),rs.getString("penanganan_klh")};
+                model.addElement(data[1]);
+            }
+
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return model;
+    }
+
+    public static DefaultComboBoxModel RuanganBoxModel(){
+
+        connection();
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+
+        try {
+            
+            stmt = conn.createStatement();
+            String query = "SELECT * FROM tbl_ruangan";
+
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                Object data[] = {rs.getInt("id_ruangan"),rs.getString("nama_ruangan")};
+                model.addElement(data[1]);
+            }
+
+            stmt.close();
+            conn.close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return model;
+    }
+
+    public static Object[] detailPenyakit(String namaPenyakit){
+
+        connection();
+        Object[] data = new Object[4];
+
+        try {
+            
+            stmt = conn.createStatement();
+            String query = "SELECT * FROM tbl_keluhan WHERE nama_keluhan = '"+namaPenyakit+"'";
+
+            ResultSet rs = stmt.executeQuery(query);
+            rs.next();
+            data[0] = rs.getInt("id_keluhan");
+            data[1] = rs.getString("nama_keluhan");
+            data[2] = rs.getString("pengertian_klh");
+            data[3] = rs.getString("penanganan_klh");
+
+            stmt.close();
+            conn.close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return data;
     }
 
 }

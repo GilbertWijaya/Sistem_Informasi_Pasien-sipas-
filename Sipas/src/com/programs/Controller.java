@@ -67,39 +67,39 @@ public class Controller {
 
     }
 
-    public static void showDashboardDiabetes(){
+    public static void showDashboardDiabetes(int id){
 
-        dashboardPenyakitDiabetesView penyakitDiabetes = new dashboardPenyakitDiabetesView();
+        dashboardPenyakitDiabetesView penyakitDiabetes = new dashboardPenyakitDiabetesView(id);
         penyakitDiabetes.setVisible(true);
         
 
     }
 
-    public static void showDashboardAsma(){
+    public static void showDashboardAsma(int id){
 
-        dashboardPenyakitAsmaView penyakitAsma = new dashboardPenyakitAsmaView();
+        dashboardPenyakitAsmaView penyakitAsma = new dashboardPenyakitAsmaView(id);
         penyakitAsma.setVisible(true);
         
 
     }
 
-    public static void showDashboardDemam(){
+    public static void showDashboardDemam(int id){
 
-        dashboardPenyakitDemamView penyakitDemamView = new dashboardPenyakitDemamView();
+        dashboardPenyakitDemamView penyakitDemamView = new dashboardPenyakitDemamView(id);
         penyakitDemamView.setVisible(true);
 
     }
 
-    public static void showDashboardPanu(){
+    public static void showDashboardPanu(int id){
 
-        dashboardPenyakitPanuView penyakitPanu  = new dashboardPenyakitPanuView();
+        dashboardPenyakitPanuView penyakitPanu  = new dashboardPenyakitPanuView(id);
         penyakitPanu.setVisible(true);
 
     }
 
-    public static void showDashboardStroke(){
+    public static void showDashboardStroke(int id){
 
-        dashboardPenyakitStrokeView penyakitStrokeView = new dashboardPenyakitStrokeView();
+        dashboardPenyakitStrokeView penyakitStrokeView = new dashboardPenyakitStrokeView(id);
         penyakitStrokeView.setVisible(true);
 
     }

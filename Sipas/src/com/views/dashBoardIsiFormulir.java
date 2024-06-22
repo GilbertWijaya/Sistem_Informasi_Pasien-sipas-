@@ -1,15 +1,18 @@
 package com.views;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ButtonGroup;
 
 import com.partials.cButton;
 import com.partials.cColor;
+import com.partials.cComboBox;
 import com.partials.cImage;
 import com.partials.cRadioButton;
 import com.partials.cTextFields;
 import com.programs.Controller;
+import com.programs.Model;
 import com.templates.cDashboardIsiFormulir;
 
 public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
@@ -32,8 +35,10 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
     cTextFields txtNoHP = new cTextFields(450, 223, 500, true);
     cRadioButton jk_radioBtn_Bpjs = new cRadioButton("BPJS", "BPJS",450 , 263, 100, 28);
     cRadioButton jk_radioBtn_Umum = new cRadioButton("UMUM", "UMUM",555 , 263, 200, 28);
-    cTextFields txtRuang = new cTextFields(450, 303, 500, true);
-    cTextFields txtPenyakit = new cTextFields(450, 343, 500, true);
+    //cTextFields txtRuang = new cTextFields(450, 303, 500, true);
+    cComboBox ruanganBox;
+    //cTextFields txtPenyakit = new cTextFields(450, 343, 500, true);
+    cComboBox penyakitBox;
     cTextFields txtPenanggungJawab = new cTextFields(450, 383, 500, true);
     cTextFields txtAlamat = new cTextFields(450, 423, 500, true);
 
@@ -57,7 +62,7 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.showDashboard(WIDTH);
+                Controller.showDashboard(id);
             }
 
         });
@@ -95,7 +100,7 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.showDashboardPembayaran(0);
+                Controller.showDashboardPembayaran(id);
             }
 
         });
@@ -115,6 +120,15 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.showDashboardTerdaftar(id);
+            }
+
+        });
+
+        isiFormulir_btn.addActionListener(new java.awt.event.ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(penyakitBox.getActionCommand());
             }
 
         });
@@ -156,8 +170,10 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
         subBodyPanel.add(jk_radioBtn_Umum);
         jk_group_kelas.add(jk_radioBtn_Bpjs);
         jk_group_kelas.add(jk_radioBtn_Umum);
-        subBodyPanel.add(txtRuang);
-        subBodyPanel.add(txtPenyakit);
+        ruanganBox = new cComboBox(Model.RuanganBoxModel(), 450, 303, 500, 28);
+        subBodyPanel.add(ruanganBox);
+        penyakitBox = new cComboBox(Model.PenyakitBoxModel(), 450, 343, 500, 28);
+        subBodyPanel.add(penyakitBox);
         subBodyPanel.add(txtPenanggungJawab);
         subBodyPanel.add(txtAlamat);
 

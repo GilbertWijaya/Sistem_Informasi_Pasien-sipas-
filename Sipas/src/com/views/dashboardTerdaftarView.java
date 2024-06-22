@@ -55,7 +55,7 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
 
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
-                Controller.showDashboard(WIDTH);
+                Controller.showDashboard(id);
             }
 
         });

@@ -9,6 +9,7 @@ import com.partials.cImage;
 import com.partials.cScrollPane;
 import com.partials.cTextArea;
 import com.programs.Controller;
+import com.programs.Model;
 import com.templates.cdashboardPenyakit;
 
 public class dashboardPenyakitDemamView extends cdashboardPenyakit {
@@ -19,11 +20,11 @@ public class dashboardPenyakitDemamView extends cdashboardPenyakit {
     cScrollPane spPengertianDemam;
     cScrollPane spPenangananDemam;
 
-    cTextArea txtAreaPengertianDemam = new cTextArea(330,25,750, 80, true);
-    cTextArea txtAreaPenangananDemam = new cTextArea(330,110,750, 220, true);
+    cTextArea txtAreaPengertianDemam = new cTextArea(330,25,750, 80, false);
+    cTextArea txtAreaPenangananDemam = new cTextArea(330,110,750, 220, false);
 
     
-    public dashboardPenyakitDemamView() {
+    public dashboardPenyakitDemamView(int id) {
         super();
 
         berandaIcon.addMouseListener(new java.awt.event.MouseAdapter(){
@@ -40,7 +41,7 @@ public class dashboardPenyakitDemamView extends cdashboardPenyakit {
 
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
-                Controller.showDashboard(WIDTH);
+                Controller.showDashboard(id);
             }
 
         });
@@ -55,16 +56,12 @@ public class dashboardPenyakitDemamView extends cdashboardPenyakit {
 
         pengertian_lbl.setText("Apa itu Demam");
         txtAreaPengertianDemam.setFont(new Font("Poppins",Font.PLAIN,18));
-        txtAreaPengertianDemam.setText("Diabetes adalah penyakit kronis yang disebabkan oleh kadar gula dalam darah tinggi. "
-                + "Kadar gula dalam darah tinggi adalah kadar gula dalam darah yang lebih tinggi dari normal."
-                + "Kadar gula dalam darah tinggi dapat menyebabkan penurunan");
+        txtAreaPengertianDemam.setText(Model.detailPenyakit("demam")[2].toString());
         spPengertianDemam = new cScrollPane(txtAreaPengertianDemam, 330, 25,800, 80);
         spPengertianDemam.setBorder(new LineBorder(cColor.BLACK_1,1));
 
         txtAreaPenangananDemam.setFont(new Font("Poppins",Font.PLAIN,18));
-        txtAreaPenangananDemam.setText("Diabetes adalah penyakit kronis yang disebabkan oleh kadar gula dalam darah tinggi. "
-                + "Kadar gula dalam darah tinggi adalah kadar gula dalam darah yang lebih tinggi dari normal."
-                + "Kadar gula dalam darah tinggi dapat menyebabkan penurunan");
+        txtAreaPenangananDemam.setText(Model.detailPenyakit("demam")[3].toString());
         spPenangananDemam= new cScrollPane(txtAreaPenangananDemam, 330, 110,800, 220);
         spPenangananDemam.setBorder(new LineBorder(cColor.BLACK_1,1));
 
