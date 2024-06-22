@@ -10,6 +10,7 @@ import com.partials.cImage;
 import com.partials.cRadioButton;
 import com.partials.cTextFields;
 import com.programs.Controller;
+import com.programs.Model;
 import com.templates.cDashboardFormTerdaftar;
 
 public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
@@ -22,16 +23,17 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
     cImage iconTerdaftar = new cImage(terdaftarPath, 50,50);
     cImage berandaImage = new cImage("E:\\Mata kuliah\\semester 2\\basis data\\project uas db\\Sipas\\src\\Logo Beranda.png", 35, 35);
 
-    cTextFields txtNama = new cTextFields(450, 23, 500,true); 
-    cTextFields txtEmail = new cTextFields(450, 63, 500,true);
-    cTextFields txtUsia = new cTextFields(450, 103, 500, true);
-    cTextFields txtNoHP = new cTextFields(450, 143, 500, true);
-    cRadioButton jk_radioBtn_Bpjs = new cRadioButton("BPJS", "BPJS",450 , 183, 100, 28);
-    cRadioButton jk_radioBtn_Umum = new cRadioButton("UMUM", "UMUM",555 , 183, 200, 28);
-    cTextFields txtRuang = new cTextFields(450, 223, 500, true);
-    cTextFields txtPenyakit = new cTextFields(450, 263, 500, true);
-    cTextFields txtPenanggungJawab = new cTextFields(450, 303, 500, true);
-    cTextFields txtAlamat = new cTextFields(450, 343, 500, true);
+    cTextFields txtNama = new cTextFields(450, 23, 500,false); 
+    cTextFields txtEmail = new cTextFields(450, 63, 500,false);
+    cTextFields txtUsia = new cTextFields(450, 103, 500, false);
+    cTextFields txtNoHP = new cTextFields(450, 143, 500, false);
+    cRadioButton jk_radioBtn_Bpjs = new cRadioButton("BPJS", "bpjs",450 , 183, 100, 28);
+    cRadioButton jk_radioBtn_Umum = new cRadioButton("UMUM", "umum",555 , 183, 200, 28);
+    ButtonGroup jk_group_kelas;
+    cTextFields txtRuang = new cTextFields(450, 223, 500, false);
+    cTextFields txtPenyakit = new cTextFields(450, 263, 500, false);
+    cTextFields txtPenanggungJawab = new cTextFields(450, 303, 500, false);
+    cTextFields txtAlamat = new cTextFields(450, 343, 500, false);
 
     cButton EditFormulir_btn = new cButton("Edit Formulir", 1005, 655, 200, 28, cColor.GREEN_TOSKA);
     cButton HapusFormulir_btn = new cButton("Hapus Formulir", 795, 655, 200, 28, cColor.GREEN_TOSKA);
@@ -91,23 +93,41 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
 
         jk_radioBtn_Bpjs.setBackground(cColor.GREEN_TOSKA);
         jk_radioBtn_Umum.setBackground(cColor.GREEN_TOSKA);
-        ButtonGroup jk_group_kelas = new ButtonGroup();
+        jk_group_kelas = new ButtonGroup();
+        
 
         headerPanel.add(iconIsiFormulir);        
         headerPanel.add(iconTerdaftar);
 
         subBodyPanel.add(txtNama);
+        txtNama.setText(Model.dataTerdaftarPasien(id)[2].toString());
         subBodyPanel.add(txtEmail);
+        txtEmail.setText(Model.dataTerdaftarPasien(id)[4].toString());
         subBodyPanel.add(txtUsia);
+        txtUsia.setText(Model.dataTerdaftarPasien(id)[5].toString());
         subBodyPanel.add(txtNoHP);
+        txtNoHP.setText(Model.dataTerdaftarPasien(id)[6].toString());
         subBodyPanel.add(jk_radioBtn_Bpjs);
         subBodyPanel.add(jk_radioBtn_Umum);
         jk_group_kelas.add(jk_radioBtn_Bpjs);
         jk_group_kelas.add(jk_radioBtn_Umum);
+        
+        String kelas = Model.dataTerdaftarPasien(id)[7].toString();
+        System.out.println(kelas);
+        if (kelas.equalsIgnoreCase("bpjs")) {
+            jk_radioBtn_Bpjs.setSelected(true);
+        }else{
+            jk_radioBtn_Umum.setSelected(true);
+        }
+
         subBodyPanel.add(txtRuang);
+        txtRuang.setText(Model.dataTerdaftarPasien(id)[9].toString());
         subBodyPanel.add(txtPenyakit);
+        txtPenyakit.setText(Model.dataTerdaftarPasien(id)[11].toString());
         subBodyPanel.add(txtPenanggungJawab);
+        txtPenanggungJawab.setText(Model.dataTerdaftarPasien(id)[12].toString());
         subBodyPanel.add(txtAlamat);
+        txtAlamat.setText(Model.dataTerdaftarPasien(id)[13].toString());
 
 
         bodyPanel.add(berandaImage);   

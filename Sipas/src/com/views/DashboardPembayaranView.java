@@ -1,12 +1,16 @@
 package com.views;
 
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JOptionPane;
 
 import com.partials.cButton;
 import com.partials.cCheckBox;
 import com.partials.cColor;
 import com.partials.cImage;
 import com.programs.Controller;
+import com.programs.Model;
 import com.templates.cDashboardPembayaran;
 
 public class DashboardPembayaranView extends cDashboardPembayaran {
@@ -41,6 +45,40 @@ public class DashboardPembayaranView extends cDashboardPembayaran {
 
         });
 
+        bayarBtn.addActionListener(new java.awt.event.ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                String value = aggrement.getActionCommand().toString();
+                if(value.equals("Setuju")){
+                    
+                    int id_pasien = Integer.parseInt(Model.dataPasien(id)[0].toString());
+                    int pemeriksaan_id = Integer.parseInt(Model.dataPemeriksaan(id_pasien)[0].toString());
+                    int saldoAkunNow = Integer.parseInt(Model.getDetailAkun(id)[4].toString());
+                    int saldoAkunNew = saldoAkunNow - Integer.parseInt(Model.infoPembayaranPasien(id)[11].toString());
+
+                    if (Model.insertDataPembayaranPasien(pemeriksaan_id)) {
+                        
+                        if (Model.isiSaldo(id, saldoAkunNew)) {
+                            JOptionPane.showMessageDialog(null,"Data berhasil dinput","Berhasil",JOptionPane.INFORMATION_MESSAGE);
+                        }else{
+                            JOptionPane.showMessageDialog(null,"Data gagal dinput","Gagal",JOptionPane.ERROR_MESSAGE);
+                        }
+
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null,"Data gagal dinput","Gagal",JOptionPane.ERROR_MESSAGE);
+                    }
+
+                }else{
+                    JOptionPane.showMessageDialog(null, "Data gagal terbayar ulangi lagi pembayaran","Gagal",JOptionPane.ERROR_MESSAGE);
+                }
+
+            }
+            
+        });
+
         initsDashboardPembayaran(id);
     }
 
@@ -48,6 +86,12 @@ public class DashboardPembayaranView extends cDashboardPembayaran {
 
         berandaIcon.setBounds(1190, 10, 35, 35);
         aggrement.setBounds(33, 390, 500, 50);
+
+        jenis_kelas_lbl.setText(Model.infoPembayaranPasien(id)[4].toString());
+        jenis_ruang_lbl.setText(Model.infoPembayaranPasien(id)[6].toString());
+        nama_ruang_lbl.setText(Model.infoPembayaranPasien(id)[6].toString());
+        jenis_penyakit_lbl.setText(Model.infoPembayaranPasien(id)[7].toString());
+        harga_lbl.setText("RP " + Model.infoPembayaranPasien(id)[11].toString());        
 
         panelUtama.add(berandaIcon);
         panelUtama.add(aggrement);

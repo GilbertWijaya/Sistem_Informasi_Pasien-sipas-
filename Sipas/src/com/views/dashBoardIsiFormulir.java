@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 import com.partials.cButton;
 import com.partials.cColor;
@@ -29,10 +30,12 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
     cTextFields txtNama = new cTextFields(450, 23, 500,true); 
     cTextFields txtTempatLahir = new cTextFields(450, 63, 500,true);
     cTextFields txtTanggalLahir = new cTextFields(450, 103, 500,true);  
+    ButtonGroup jk_group;
     cRadioButton jk_radioBtn_Pria = new cRadioButton("Pria", "laki_laki",450 , 143, 100, 28);
     cRadioButton jk_radioBtn_Wanita = new cRadioButton("Wanita", "perempuan",555 , 143, 200, 28);
     cTextFields txtUsia = new cTextFields(450, 183, 500, true);
     cTextFields txtNoHP = new cTextFields(450, 223, 500, true);
+    ButtonGroup jk_group_kelas;
     cRadioButton jk_radioBtn_Bpjs = new cRadioButton("BPJS", "BPJS",450 , 263, 100, 28);
     cRadioButton jk_radioBtn_Umum = new cRadioButton("UMUM", "UMUM",555 , 263, 200, 28);
     //cTextFields txtRuang = new cTextFields(450, 303, 500, true);
@@ -128,14 +131,63 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
             
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(penyakitBox.getActionCommand());
-            }
+                
+                String nama = txtNama.getText();
+                String tempatLahir = txtTempatLahir.getText();
+                String tanggalLahir = txtTanggalLahir.getText();
+                String usia = txtUsia.getText();
+                String jenisKelamin = jk_group.getSelection().getActionCommand().toString();
+                int UsiaValue = Integer.parseInt(txtUsia.getText());
+                String nomorHp = txtNoHP.getText();
+                String kelasValue = jk_group_kelas.getSelection().getActionCommand().toString();
+                String ruanganValue = ruanganBox.getSelectedItem().toString();
+                String penyakitValue = penyakitBox.getSelectedItem().toString();
+                String penanggungJawabValue = txtPenanggungJawab.getText();
+                String alamatValue = txtAlamat.getText();
 
-        });
 
+                if(nama.isEmpty() || tempatLahir.isEmpty() || tanggalLahir.isEmpty() || usia.isEmpty() || jenisKelamin.isEmpty() 
+                || nomorHp.isEmpty() || kelasValue.isEmpty() 
+                || ruanganValue.isEmpty() || penyakitValue.isEmpty() 
+                || penanggungJawabValue.isEmpty() || alamatValue.isEmpty()){
+
+                dashBoardIsiFormulir.this.setVisible(false);
+                JOptionPane.showMessageDialog(null, "Mohon lengkapi data terlebih dahulu","Error",JOptionPane.ERROR_MESSAGE);
+                
+                }
+                else{
+
+                    if (Model.insertDataPasien(id,nama,tanggalLahir,tempatLahir,UsiaValue,nomorHp,alamatValue,jenisKelamin,Integer.parseInt(Model.detailPenyakit(penyakitValue)[0].toString()),penanggungJawabValue) ) {
+                        
+                        if (Model.insertDataPasienPemeriksaan(Integer.parseInt(Model.dataPasienByNama(nama)[0].toString()),Integer.parseInt(Model.dataDokterBySpesialisasi(penyakitValue)[0].toString()))) {
+                            
+                            int idPasien = Integer.parseInt(Model.dataPasienByNama(nama)[0].toString());
+                            int idPemeriksaan = Integer.parseInt(Model.dataPemeriksaan(idPasien)[0].toString());
+                            int idKamar = Integer.parseInt(Model.dataRuangan(ruanganValue)[0].toString());
+
+                            if (Model.insertDataPasienMenginap(idPemeriksaan, idKamar)) {
+                                JOptionPane.showMessageDialog(null,"data berhasil didaftarkan","Berhasil",JOptionPane.INFORMATION_MESSAGE);
+                                Controller.showDashboardPembayaran(id);
+                            }
+                            else{
+                                JOptionPane.showMessageDialog(null, "Data gagal didaftarkan","Gagal",JOptionPane.ERROR_MESSAGE);
+                            }
+
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Data gagal didaftarkan","Gagal",JOptionPane.ERROR_MESSAGE);
+                        }
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Data gagal didaftarkan","Gagal",JOptionPane.ERROR_MESSAGE);
+                    }
+
+                }
+        }
+    });
         initIsiFormulir(id);
-
     }
+        
 
     public void initIsiFormulir(int id){
 
@@ -147,11 +199,11 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
 
         jk_radioBtn_Pria.setBackground(cColor.GREEN_TOSKA);
         jk_radioBtn_Wanita.setBackground(cColor.GREEN_TOSKA);
-        ButtonGroup jk_group = new ButtonGroup();
+        jk_group = new ButtonGroup();
 
         jk_radioBtn_Bpjs.setBackground(cColor.GREEN_TOSKA);
         jk_radioBtn_Umum.setBackground(cColor.GREEN_TOSKA);
-        ButtonGroup jk_group_kelas = new ButtonGroup();
+        jk_group_kelas = new ButtonGroup();
 
         headerPanel.add(iconIsiFormulir);        
         headerPanel.add(iconMenungguPembayaran);
