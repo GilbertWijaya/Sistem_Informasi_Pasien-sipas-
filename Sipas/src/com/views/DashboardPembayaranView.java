@@ -62,6 +62,7 @@ public class DashboardPembayaranView extends cDashboardPembayaran {
                         
                         if (Model.isiSaldo(id, saldoAkunNew)) {
                             JOptionPane.showMessageDialog(null,"Data berhasil dinput","Berhasil",JOptionPane.INFORMATION_MESSAGE);
+                            Controller.showDashboardTerdaftar(id);
                         }else{
                             JOptionPane.showMessageDialog(null,"Data gagal dinput","Gagal",JOptionPane.ERROR_MESSAGE);
                         }

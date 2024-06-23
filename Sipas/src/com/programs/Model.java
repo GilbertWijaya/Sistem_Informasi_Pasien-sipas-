@@ -626,4 +626,53 @@ public class Model {
         return model;
     }
 
+    public static boolean UpdateDataPasien(int idAkun,String nama,int usia,String noHp,int keluhan,String pj,String alamat){
+
+        connection();
+        boolean status = false;
+
+        try {
+            
+            stmt = conn.createStatement();
+            String query = "UPDATE tbl_pasien SET nama_pasien = '"+nama+"', umur_pasien = "+usia+", no_hp_pasien = '"+noHp+"', keluhan = "+keluhan+", nama_wali_psn = '"+pj+"', alamat_pasien= '"+alamat+"' WHERE akun_pendaftar = "+idAkun;
+
+            if (stmt.executeUpdate(query) >= 0) {
+                status = true;
+            }
+
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return status;
+
+    }
+
+    public static boolean DeleteDataTblCustomer(int idAkun,String nama){
+
+        connection();
+        boolean status = false;
+
+        try {
+            
+            stmt = conn.createStatement();
+            String query = "DELETE FROM `tbl_pasien` WHERE tbl_pasien.akun_pendaftar = "+idAkun+" OR nama_pasien = '"+nama+"'";
+
+            if (stmt.executeUpdate(query) >= 0) {
+                status = true;
+            }
+
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return status;
+    }
+
 }

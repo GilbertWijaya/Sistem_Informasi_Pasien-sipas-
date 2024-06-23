@@ -24,6 +24,7 @@ public class Main {
         //Controller.showDashboardRiwayat(10);
         //Controller.showDashboardPembayaran(10);
         //Controller.showDashboardKeluhan(10);
+        //Controller.showDashboardTerdaftar(2);
 
     }
 

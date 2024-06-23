@@ -1,11 +1,15 @@
 package com.views;
 
+import java.awt.event.ActionEvent;
+
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 
 import org.w3c.dom.events.MouseEvent;
 
 import com.partials.cButton;
 import com.partials.cColor;
+import com.partials.cComboBox;
 import com.partials.cImage;
 import com.partials.cRadioButton;
 import com.partials.cTextFields;
@@ -30,14 +34,16 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
     cRadioButton jk_radioBtn_Bpjs = new cRadioButton("BPJS", "bpjs",450 , 183, 100, 28);
     cRadioButton jk_radioBtn_Umum = new cRadioButton("UMUM", "umum",555 , 183, 200, 28);
     ButtonGroup jk_group_kelas;
-    cTextFields txtRuang = new cTextFields(450, 223, 500, false);
-    cTextFields txtPenyakit = new cTextFields(450, 263, 500, false);
+    cComboBox ruanganBox;
+    //cTextFields txtRuang = new cTextFields(450, 223, 500, true);
+    cComboBox penyakitBox;
+    //cTextFields txtPenyakit = new cTextFields(450, 263, 500, true);
     cTextFields txtPenanggungJawab = new cTextFields(450, 303, 500, false);
     cTextFields txtAlamat = new cTextFields(450, 343, 500, false);
 
     cButton EditFormulir_btn = new cButton("Edit Formulir", 1005, 655, 200, 28, cColor.GREEN_TOSKA);
     cButton HapusFormulir_btn = new cButton("Hapus Formulir", 795, 655, 200, 28, cColor.GREEN_TOSKA);
-
+    cButton editButton = new cButton("Edit",585, 655, 200, 28, cColor.GREEN_TOSKA);
 
     public dashboardTerdaftarView(int id) {
         
@@ -81,6 +87,68 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
 
         });        
 
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                txtNama.setEditable(true);
+                //txtEmail.setEditable(true);
+                txtUsia.setEditable(true);
+                txtNoHP.setEditable(true);
+                //ruanganBox.setEnabled(true);
+                //txtRuang.setEditable(true);
+                penyakitBox.setEnabled(true);
+                jk_group_kelas.setSelected(jk_group_kelas.getSelection(), false);
+                //txtPenyakit.setEditable(true);
+                txtPenanggungJawab.setEditable(true);
+                txtAlamat.setEditable(true);
+                
+            }
+            
+        });
+
+        EditFormulir_btn.addActionListener(new java.awt.event.ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                String nama = txtNama.getText().toString();
+                int usia = Integer.parseInt(Model.dataTerdaftarPasien(id)[4].toString());
+                //String email = txtEmail.getText().toString();
+                String noHp = txtNoHP.getText().toString();
+                String penyakit = penyakitBox.getActionCommand().toString();
+                int penyakitValue = Integer.parseInt(Model.detailPenyakit(penyakit)[0].toString());
+                String penanggungJawab = txtPenanggungJawab.getText().toString();
+                String alamat = txtAlamat.getText().toString();
+
+                if (Model.UpdateDataPasien(id, nama, usia, noHp,penyakitValue, penanggungJawab, alamat)) {
+                    JOptionPane.showMessageDialog(null, "Data berhasil diupdate","Berhasil",JOptionPane.INFORMATION_MESSAGE);
+                    Controller.showDashboard(id);                    
+                }
+
+
+            }
+
+        });
+
+
+        HapusFormulir_btn.addActionListener(new java.awt.event.ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String nama = Model.dataPasien(id)[2].toString();
+                
+                if (Model.DeleteDataTblCustomer(id,nama)) {
+                    JOptionPane.showMessageDialog(null, "Data akun berhasil dihapus","Berhasil",JOptionPane.INFORMATION_MESSAGE);
+                    Controller.showDashboard(id);
+                }
+
+            }
+
+        });
+        
+
         initIsiFormulir(id);
 
     }
@@ -95,44 +163,54 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
         jk_radioBtn_Umum.setBackground(cColor.GREEN_TOSKA);
         jk_group_kelas = new ButtonGroup();
         
+        editButton.setActionCommand("Edit");
+        
 
         headerPanel.add(iconIsiFormulir);        
         headerPanel.add(iconTerdaftar);
-
         subBodyPanel.add(txtNama);
-        txtNama.setText(Model.dataTerdaftarPasien(id)[2].toString());
         subBodyPanel.add(txtEmail);
-        txtEmail.setText(Model.dataTerdaftarPasien(id)[4].toString());
         subBodyPanel.add(txtUsia);
-        txtUsia.setText(Model.dataTerdaftarPasien(id)[5].toString());
         subBodyPanel.add(txtNoHP);
-        txtNoHP.setText(Model.dataTerdaftarPasien(id)[6].toString());
         subBodyPanel.add(jk_radioBtn_Bpjs);
         subBodyPanel.add(jk_radioBtn_Umum);
         jk_group_kelas.add(jk_radioBtn_Bpjs);
         jk_group_kelas.add(jk_radioBtn_Umum);
+        ruanganBox = new cComboBox(Model.RuanganBoxModel(), 450, 223, 500, 28);
+        ruanganBox.setEnabled(false);
+        subBodyPanel.add(ruanganBox);
+        penyakitBox = new cComboBox(Model.PenyakitBoxModel(), 450, 263, 500, 28);
+        penyakitBox.setEnabled(false);
+        subBodyPanel.add(penyakitBox);
+        subBodyPanel.add(txtPenanggungJawab);
+        subBodyPanel.add(txtAlamat);
         
+
+        txtNama.setText(Model.dataTerdaftarPasien(id)[2].toString());
+        txtEmail.setText(Model.dataTerdaftarPasien(id)[4].toString());
+        txtUsia.setText(Model.dataTerdaftarPasien(id)[5].toString());
+        txtNoHP.setText(Model.dataTerdaftarPasien(id)[6].toString());
         String kelas = Model.dataTerdaftarPasien(id)[7].toString();
-        System.out.println(kelas);
         if (kelas.equalsIgnoreCase("bpjs")) {
             jk_radioBtn_Bpjs.setSelected(true);
         }else{
             jk_radioBtn_Umum.setSelected(true);
         }
-
-        subBodyPanel.add(txtRuang);
-        txtRuang.setText(Model.dataTerdaftarPasien(id)[9].toString());
-        subBodyPanel.add(txtPenyakit);
-        txtPenyakit.setText(Model.dataTerdaftarPasien(id)[11].toString());
-        subBodyPanel.add(txtPenanggungJawab);
+        //txtRuang.setText(Model.dataTerdaftarPasien(id)[9].toString());
+        ruanganBox.setSelectedItem(Model.dataTerdaftarPasien(id)[9].toString());
+        //txtPenyakit.setText(Model.dataTerdaftarPasien(id)[11].toString());
+        penyakitBox.setSelectedItem(Model.dataTerdaftarPasien(id)[11].toString());
+        //txtPenyakit.setText(Model.dataTerdaftarPasien(id)[11].toString());
         txtPenanggungJawab.setText(Model.dataTerdaftarPasien(id)[12].toString());
-        subBodyPanel.add(txtAlamat);
         txtAlamat.setText(Model.dataTerdaftarPasien(id)[13].toString());
 
+            
+        
 
         bodyPanel.add(berandaImage);   
         bodyPanel.add(EditFormulir_btn);
         bodyPanel.add(HapusFormulir_btn);
+        bodyPanel.add(editButton);
     }
 
 }
