@@ -21,7 +21,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
     cButton PanuBtn = new cButton("Panu", 750, 85, 150, 70, cColor.BLUE_1);
     cButton StrokeBtn = new cButton("Stroke", 945, 85, 150, 70, cColor.BLUE_1);
 
-    cButton pesanKamar_btn = new cButton("Pesan Kamar", 500,650, 250,50, cColor.GREEN_TOSKA);
+    //cButton pesanKamar_btn = new cButton("Pesan Kamar", 500,650, 250,50, cColor.GREEN_TOSKA);
 
     public dashboardKeluhan(int id) {
         
@@ -42,6 +42,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.showDashboard(id);
+                dashboardKeluhan.this.setVisible(false);
             }
             
         });
@@ -53,6 +54,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
                 
                 
                 Controller.showDashboardDiabetes(id);
+                dashboardKeluhan.this.setVisible(false);
 
             }
 
@@ -65,6 +67,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
                 
                 
                 Controller.showDashboardAsma(id);
+                dashboardKeluhan.this.setVisible(false);
             }
         });
 
@@ -73,6 +76,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controller.showDashboardDemam(id);
+                dashboardKeluhan.this.setVisible(false);
             }
 
         });
@@ -82,6 +86,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controller.showDashboardPanu(id);
+                dashboardKeluhan.this.setVisible(false);
             }
 
         });
@@ -91,6 +96,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controller.showDashboardStroke(id);
+                dashboardKeluhan.this.setVisible(false);
             }
 
         });
@@ -110,7 +116,7 @@ public class dashboardKeluhan extends cDashboardKeluhan {
         headerPanel.add(StrokeBtn);
         
         panel.add(berandaIcon);    
-        panel.add(pesanKamar_btn);    
+        //panel.add(pesanKamar_btn);    
     }
 
 }

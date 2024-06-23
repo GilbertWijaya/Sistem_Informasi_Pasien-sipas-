@@ -35,6 +35,7 @@ public class dashBoardRiwayatView extends cDashboardRiwayat {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.showDashboard(id);
+                dashBoardRiwayatView.this.setVisible(false);
             }
 
         });

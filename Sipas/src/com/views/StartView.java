@@ -147,7 +147,7 @@ public class StartView extends cStartFrame {
                         Model.insertAkunPasien(email, nama,noHpString, password);
                         JOptionPane.showMessageDialog(null, "Buat akun berhasil","Berhasil",JOptionPane.INFORMATION_MESSAGE);
                         Controller.showLoginPasien();
-                        //StartView.this.setVisible(false);
+                        StartView.this.setVisible(false);
                     }
 
                 }

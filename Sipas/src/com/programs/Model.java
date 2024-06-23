@@ -91,7 +91,7 @@ public class Model {
         try {
             
             stmt = conn.createStatement();
-            String query = "SELECT COUNT(*) FROM vwinfoakun WHERE `vwinfoakun`.`email_akun` ='"+email+"' AND `vwinfoakun`.`password_akun` ="+password+"";
+            String query = "SELECT COUNT(*) FROM vwinfoakun WHERE `vwinfoakun`.`email_akun` ='"+email+"' AND `vwinfoakun`.`password_akun` ='"+password+"'";
 
             ResultSet rs = stmt.executeQuery(query);
             rs.next();
@@ -560,7 +560,7 @@ public class Model {
     public static Object[] dataTerdaftarPasien(int idAkun){
 
         connection();
-        Object[] data = new Object[14];
+        Object[] data = new Object[15];
 
         try {
             
@@ -576,13 +576,14 @@ public class Model {
             data[4] = rs.getInt("umur_pasien");
             data[5] = rs.getString("email_akun");
             data[6] = rs.getString("no_hp_pasien");
-            data[7] = rs.getString("kelas_pasien");
-            data[8] = rs.getInt("id_kamar");
-            data[9] = rs.getString("nama_ruangan");
-            data[10] = rs.getInt("keluhan");
-            data[11] = rs.getString("nama_keluhan");
-            data[12] = rs.getString("nama_wali_psn");
-            data[13] = rs.getString("alamat_wali");
+            data[7] = rs.getString("alamat_pasien");
+            data[8] = rs.getString("kelas_pasien");
+            data[9] = rs.getInt("id_kamar");
+            data[10] = rs.getString("nama_ruangan");
+            data[11] = rs.getInt("keluhan");
+            data[12] = rs.getString("nama_keluhan");
+            data[13] = rs.getString("nama_wali_psn");
+            data[14] = rs.getString("alamat_wali");
             
 
             stmt.close();
@@ -662,6 +663,33 @@ public class Model {
             String query = "DELETE FROM `tbl_pasien` WHERE tbl_pasien.akun_pendaftar = "+idAkun+" OR nama_pasien = '"+nama+"'";
 
             if (stmt.executeUpdate(query) >= 0) {
+                status = true;
+            }
+
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return status;
+    }
+
+    public static boolean verifyAkunTerdaftar(int idAkun){
+
+        connection();
+        boolean status = false;
+
+        try {
+            
+            stmt = conn.createStatement();
+            String query = "SELECT COUNT(*) FROM `vwifodataterdaftarpasien` WHERE `akun_pendaftar` ="+idAkun;
+
+            ResultSet rs = stmt.executeQuery(query);
+            rs.next();
+            
+            if (rs.getInt(1) == 1) {
                 status = true;
             }
 

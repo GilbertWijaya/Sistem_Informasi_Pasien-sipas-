@@ -38,6 +38,7 @@ public class dashBoardIsiSaldoView extends cDashboardIsiSaldo {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.showDashboard(id);
+                dashBoardIsiSaldoView.this.setVisible(false);
             }
 
         });
@@ -68,6 +69,7 @@ public class dashBoardIsiSaldoView extends cDashboardIsiSaldo {
                         Model.isiSaldo(id, totalSaldo);
                         JOptionPane.showMessageDialog(null, "Saldo berhasil ditambahkan", "Informasi", JOptionPane.INFORMATION_MESSAGE);
                         Controller.showDashboard(id);
+                        dashBoardIsiSaldoView.this.setVisible(false);
 
                     }
 

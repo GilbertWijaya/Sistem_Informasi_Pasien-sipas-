@@ -66,6 +66,7 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.showDashboard(id);
+                dashBoardIsiFormulir.this.setVisible(false);
             }
 
         });
@@ -85,6 +86,7 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.showDashboardIsiFormulir(id);
+                dashBoardIsiFormulir.this.setVisible(false);
             }
 
         });
@@ -104,6 +106,7 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.showDashboardPembayaran(id);
+                dashBoardIsiFormulir.this.setVisible(false);
             }
 
         });
@@ -122,7 +125,21 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                Controller.showDashboardTerdaftar(id);
+                
+                
+                // Controller.showDashboardTerdaftar(id);
+                // dashBoardIsiFormulir.this.setVisible(false);
+
+                if (Model.verifyAkunTerdaftar(id)) {
+                    dashBoardIsiFormulir.this.setVisible(false);
+                    Controller.showDashboardTerdaftar(id);
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "Anda belum mendaftarkan pasien","Error",JOptionPane.ERROR_MESSAGE);
+                    Controller.showDashboard(id);
+                    dashBoardIsiFormulir.this.setVisible(false);
+                }
+
             }
 
         });
@@ -168,6 +185,7 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
                             if (Model.insertDataPasienMenginap(idPemeriksaan, idKamar)) {
                                 JOptionPane.showMessageDialog(null,"data berhasil didaftarkan","Berhasil",JOptionPane.INFORMATION_MESSAGE);
                                 Controller.showDashboardPembayaran(id);
+                                dashBoardIsiFormulir.this.setVisible(false);
                             }
                             else{
                                 JOptionPane.showMessageDialog(null, "Data gagal didaftarkan","Gagal",JOptionPane.ERROR_MESSAGE);
@@ -196,6 +214,7 @@ public class dashBoardIsiFormulir extends cDashboardIsiFormulir {
         iconTerdaftar.setBounds(750, 30, 50, 50);
         berandaImage.setBounds(1170, 15, 35, 35);
 
+        
 
         jk_radioBtn_Pria.setBackground(cColor.GREEN_TOSKA);
         jk_radioBtn_Wanita.setBackground(cColor.GREEN_TOSKA);

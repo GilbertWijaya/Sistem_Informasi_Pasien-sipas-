@@ -42,6 +42,7 @@ public class dashboardPenyakitStrokeView extends cdashboardPenyakit {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 Controller.showDashboard(id);
+                dashboardPenyakitStrokeView.this.setVisible(false);
             }
 
         });

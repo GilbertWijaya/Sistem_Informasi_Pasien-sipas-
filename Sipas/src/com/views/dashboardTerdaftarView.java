@@ -28,8 +28,8 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
     cImage berandaImage = new cImage("E:\\Mata kuliah\\semester 2\\basis data\\project uas db\\Sipas\\src\\Logo Beranda.png", 35, 35);
 
     cTextFields txtNama = new cTextFields(450, 23, 500,false); 
-    cTextFields txtEmail = new cTextFields(450, 63, 500,false);
-    cTextFields txtUsia = new cTextFields(450, 103, 500, false);
+    cTextFields txtUsia = new cTextFields(450, 63, 500,false);
+    cTextFields txtEmail = new cTextFields(450, 103, 500, false);
     cTextFields txtNoHP = new cTextFields(450, 143, 500, false);
     cRadioButton jk_radioBtn_Bpjs = new cRadioButton("BPJS", "bpjs",450 , 183, 100, 28);
     cRadioButton jk_radioBtn_Umum = new cRadioButton("UMUM", "umum",555 , 183, 200, 28);
@@ -41,7 +41,7 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
     cTextFields txtPenanggungJawab = new cTextFields(450, 303, 500, false);
     cTextFields txtAlamat = new cTextFields(450, 343, 500, false);
 
-    cButton EditFormulir_btn = new cButton("Edit Formulir", 1005, 655, 200, 28, cColor.GREEN_TOSKA);
+    cButton EditFormulir_btn = new cButton("Simpan Formulir", 1005, 655, 200, 28, cColor.GREEN_TOSKA);
     cButton HapusFormulir_btn = new cButton("Hapus Formulir", 795, 655, 200, 28, cColor.GREEN_TOSKA);
     cButton editButton = new cButton("Edit",585, 655, 200, 28, cColor.GREEN_TOSKA);
 
@@ -64,6 +64,7 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 Controller.showDashboard(id);
+                dashboardTerdaftarView.this.setVisible(false);
             }
 
         });
@@ -83,6 +84,7 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 Controller.showDashboardIsiFormulir(id);
+                dashboardTerdaftarView.this.setVisible(false);
             }
 
         });        
@@ -93,8 +95,8 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
             public void actionPerformed(ActionEvent e) {
                 
                 txtNama.setEditable(true);
-                //txtEmail.setEditable(true);
-                txtUsia.setEditable(true);
+                txtEmail.setEditable(true);
+                //txtUsia.setEditable(true);
                 txtNoHP.setEditable(true);
                 //ruanganBox.setEnabled(true);
                 //txtRuang.setEditable(true);
@@ -124,7 +126,8 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
 
                 if (Model.UpdateDataPasien(id, nama, usia, noHp,penyakitValue, penanggungJawab, alamat)) {
                     JOptionPane.showMessageDialog(null, "Data berhasil diupdate","Berhasil",JOptionPane.INFORMATION_MESSAGE);
-                    Controller.showDashboard(id);                    
+                    Controller.showDashboard(id);    
+                    dashboardTerdaftarView.this.setVisible(false);                
                 }
 
 
@@ -142,6 +145,7 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
                 if (Model.DeleteDataTblCustomer(id,nama)) {
                     JOptionPane.showMessageDialog(null, "Data akun berhasil dihapus","Berhasil",JOptionPane.INFORMATION_MESSAGE);
                     Controller.showDashboard(id);
+                    dashboardTerdaftarView.this.setVisible(false);
                 }
 
             }
@@ -185,28 +189,35 @@ public class dashboardTerdaftarView extends cDashboardFormTerdaftar {
         subBodyPanel.add(txtPenanggungJawab);
         subBodyPanel.add(txtAlamat);
         
-
-        txtNama.setText(Model.dataTerdaftarPasien(id)[2].toString());
-        txtEmail.setText(Model.dataTerdaftarPasien(id)[4].toString());
-        txtUsia.setText(Model.dataTerdaftarPasien(id)[5].toString());
-        txtNoHP.setText(Model.dataTerdaftarPasien(id)[6].toString());
-        String kelas = Model.dataTerdaftarPasien(id)[7].toString();
-        if (kelas.equalsIgnoreCase("bpjs")) {
-            jk_radioBtn_Bpjs.setSelected(true);
-        }else{
-            jk_radioBtn_Umum.setSelected(true);
+        if (Model.verifyAkunTerdaftar(id)) {
+            txtNama.setText(Model.dataTerdaftarPasien(id)[2].toString());
+            txtEmail.setText(Model.dataTerdaftarPasien(id)[4].toString());
+            txtUsia.setText(Model.dataTerdaftarPasien(id)[5].toString());
+            txtNoHP.setText(Model.dataTerdaftarPasien(id)[6].toString());
+            String kelas = Model.dataTerdaftarPasien(id)[8].toString();
+            if (kelas.equalsIgnoreCase("bpjs")) {
+                jk_radioBtn_Bpjs.setSelected(true);
+            }else{
+                jk_radioBtn_Umum.setSelected(true);
+            }
+            //txtRuang.setText(Model.dataTerdaftarPasien(id)[9].toString());
+            ruanganBox.setSelectedItem(Model.dataTerdaftarPasien(id)[10].toString());
+            //txtPenyakit.setText(Model.dataTerdaftarPasien(id)[11].toString());
+            penyakitBox.setSelectedItem(Model.dataTerdaftarPasien(id)[12].toString());
+            //txtPenanggungJawab.setText(Model.dataTerdaftarPasien(id)[13].toString());
+            txtPenanggungJawab.setText(Model.dataTerdaftarPasien(id)[13].toString());
+            txtAlamat.setText(Model.dataTerdaftarPasien(id)[7].toString());
+            //txtPenyakit.setText(Model.dataTerdaftarPasien(id)[11].toString());
+            txtPenanggungJawab.setText(Model.dataTerdaftarPasien(id)[13].toString());
+            txtAlamat.setText(Model.dataTerdaftarPasien(id)[7].toString());   
         }
-        //txtRuang.setText(Model.dataTerdaftarPasien(id)[9].toString());
-        ruanganBox.setSelectedItem(Model.dataTerdaftarPasien(id)[9].toString());
-        //txtPenyakit.setText(Model.dataTerdaftarPasien(id)[11].toString());
-        penyakitBox.setSelectedItem(Model.dataTerdaftarPasien(id)[11].toString());
-        //txtPenyakit.setText(Model.dataTerdaftarPasien(id)[11].toString());
-        txtPenanggungJawab.setText(Model.dataTerdaftarPasien(id)[12].toString());
-        txtAlamat.setText(Model.dataTerdaftarPasien(id)[13].toString());
+        else{
 
-            
+            JOptionPane.showMessageDialog(null,"Akun belum mendaftarkan pasien", "Error",JOptionPane.ERROR_MESSAGE);
+            dashboardTerdaftarView.this.setVisible(false);
+            Controller.showDashboard(id);
+        }
         
-
         bodyPanel.add(berandaImage);   
         bodyPanel.add(EditFormulir_btn);
         bodyPanel.add(HapusFormulir_btn);

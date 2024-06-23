@@ -45,6 +45,7 @@ public class dashboardPenyakitDiabetesView extends cdashboardPenyakit {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.showDashboard(id);
+                dashboardPenyakitDiabetesView.this.setVisible(false);
             }
 
         });

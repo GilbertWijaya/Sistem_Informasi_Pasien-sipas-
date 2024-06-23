@@ -42,6 +42,7 @@ public class dashboardPenyakitDemamView extends cdashboardPenyakit {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 Controller.showDashboard(id);
+                dashboardPenyakitDemamView.this.setVisible(false);
             }
 
         });

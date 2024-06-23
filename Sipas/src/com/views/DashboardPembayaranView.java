@@ -41,6 +41,7 @@ public class DashboardPembayaranView extends cDashboardPembayaran {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Controller.showDashboard(id);
+                DashboardPembayaranView.this.setVisible(false);
             }
 
         });
@@ -63,6 +64,7 @@ public class DashboardPembayaranView extends cDashboardPembayaran {
                         if (Model.isiSaldo(id, saldoAkunNew)) {
                             JOptionPane.showMessageDialog(null,"Data berhasil dinput","Berhasil",JOptionPane.INFORMATION_MESSAGE);
                             Controller.showDashboardTerdaftar(id);
+                            DashboardPembayaranView.this.setVisible(false);
                         }else{
                             JOptionPane.showMessageDialog(null,"Data gagal dinput","Gagal",JOptionPane.ERROR_MESSAGE);
                         }
